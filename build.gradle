@@ -1,0 +1,26 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE")
+    }
+}
+
+apply plugin: 'spring-boot'
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    compile (
+            'org.springframework.boot:spring-boot-starter-web',
+            'org.springframework.boot:spring-boot-starter-data-mongodb')
+
+    testCompile (
+            'de.flapdoodle.embed:de.flapdoodle.embed.mongo',
+            'org.springframework.boot:spring-boot-starter-test')
+}
