@@ -14,8 +14,16 @@ public class Something {
     private final String k2;
     private String content;
 
+    Something() {
+        this(null, null);
+    }
+
     public Something(String k1, String k2) {
-        id = null;
+        this(null, k1, k2);
+    }
+
+    public Something(String id, String k1, String k2) {
+        this.id = id;
         this.k1 = k1;
         this.k2 = k2;
     }
