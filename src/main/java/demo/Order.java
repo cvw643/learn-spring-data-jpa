@@ -1,6 +1,11 @@
 package demo;
 
+import org.springframework.data.domain.AfterDomainEventPublication;
+import org.springframework.data.domain.DomainEvents;
+
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * @author YQ.Huang
@@ -47,5 +52,16 @@ public class Order {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    @DomainEvents
+    public Collection<Object> domainEvents() {
+        System.out.println("Publishing domain events");
+        return Collections.singleton("domain event");
+    }
+
+    @AfterDomainEventPublication
+    public void afterDomainEventPublication() {
+        System.out.println("Published domain events");
     }
 }

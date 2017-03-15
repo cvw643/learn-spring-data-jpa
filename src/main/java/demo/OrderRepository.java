@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author YQ.Huang
  */
-@Repository
+//@Repository
 public interface OrderRepository extends MongoRepository<Order, Order.Id> {
     List<Order> findByIdAppId(String appId);
 }

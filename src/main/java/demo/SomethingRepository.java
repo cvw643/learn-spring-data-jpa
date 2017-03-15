@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 /**
  * @author YQ.Huang
  */
+// NOTE: @Repository is not mandatory
 @Repository
 public interface SomethingRepository extends MongoRepository<Something, String> {
 }
