@@ -9,6 +9,7 @@ import javax.persistence.*;
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) // case2
 @Inheritance(strategy = InheritanceType.JOINED) // case3
 @Entity
+//@MappedSuperclass
 public abstract class Employee {
     @Id
 //    @GeneratedValue(strategy = GenerationType.TABLE) // case2
