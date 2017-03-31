@@ -2,7 +2,6 @@ package demo.cascade;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +14,7 @@ public class SalesOrder {
     @GeneratedValue
     private int id;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<OrderLineItem> items = new HashSet<>();
 
     private Date createdAt = new Date();
@@ -24,7 +23,19 @@ public class SalesOrder {
     }
 
     public void addItem(String product) {
-        items.add(new OrderLineItem(product));
+        OrderLineItem orderLineItem = new OrderLineItem(this, product);
+        items.add(orderLineItem);
+    }
+
+    public void clearItems() {
+        for (OrderLineItem item:items) {
+            item.resetOrder();
+        }
+        items.clear();
+    }
+
+    public int nextItemId() {
+        return items.size() + 1;
     }
 
     public Set<OrderLineItem> getItems() {

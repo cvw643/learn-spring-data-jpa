@@ -21,9 +21,6 @@ public class EmployeeRepoTest {
     @Autowired
     private EmployeeRepo employeeRepo;
 
-    @Autowired
-    private UserTransaction userTransaction;
-
     @Test
     public void case1_singleTable() throws Exception {
         FullTimeEmployee fullTimeEmployee = new FullTimeEmployee("hyq");
