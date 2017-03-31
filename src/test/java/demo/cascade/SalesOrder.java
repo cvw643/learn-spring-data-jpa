@@ -29,7 +29,7 @@ public class SalesOrder {
 
     public void clearItems() {
         for (OrderLineItem item:items) {
-            item.resetOrder();
+            item.setOrder(null);
         }
         items.clear();
     }
