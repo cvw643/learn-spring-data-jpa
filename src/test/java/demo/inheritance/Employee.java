@@ -5,12 +5,14 @@ import javax.persistence.*;
 /**
  * @author YQ.Huang
  */
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // case1
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) // case2
 @Inheritance(strategy = InheritanceType.JOINED) // case3
 @Entity
 public abstract class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+//    @GeneratedValue(strategy = GenerationType.TABLE) // case2
+    @GeneratedValue
     private int id;
 
     private String name;
