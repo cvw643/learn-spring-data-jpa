@@ -1,14 +1,16 @@
 package demo.event;
 
+import org.springframework.data.domain.AbstractAggregateRoot;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Objects;
+import java.util.Date;
 
 /**
  * @author YQ.Huang
  */
 @Entity
-public class Account {
+public class Account extends AbstractAggregateRoot {
     @Id
     private String username;
     private String password;
@@ -21,10 +23,8 @@ public class Account {
         this.password = password;
     }
 
-    public void changePassword(String oldPassword, String newPassword) {
-        if (!Objects.equals(oldPassword, this.password)) {
-            throw new RuntimeException("Incorrect password!");
-        }
-        this.password = newPassword;
+    public void resetPassword() {
+        this.password = new Date().toString();
+        registerEvent(new AccountPasswordResetEvent(username));
     }
 }

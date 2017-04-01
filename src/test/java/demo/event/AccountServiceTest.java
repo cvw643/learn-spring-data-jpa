@@ -11,17 +11,14 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class AccountRepoTest {
+public class AccountServiceTest {
+
     @Autowired
-    private AccountRepo accountRepo;
+    private AccountService accountService;
 
     @Test
-    public void case1() throws Exception {
-        Account account = new Account("cvw643", "old");
-        accountRepo.save(account);
-
-        Account account1 = accountRepo.findOne("cvw643");
-        account1.changePassword("old", "new");
-        accountRepo.save(account1);
+    public void resetPassword() throws Exception {
+        accountService.resetPassword("cvw643");
     }
+
 }
